@@ -25,17 +25,17 @@ validator.add_column('foo', col_type=int)
 validator.add_column('bar', col_type=str, required=True)
 validated_df, errors = validator.validate(df)
 
-print(json.dumps(errors['Col_errors'], indent=2))
+print(json.dumps(errors['Col_errors'], indent=2, sort_keys=True))
 
 {
-  "foo": {
-    "2": [
-      "Value (three) not of type <class 'int'>"
-    ]
-  },
   "bar": {
     "1": [
       "Value is required"
+    ]
+  },
+  "foo": {
+    "2": [
+      "Value (three) not of type <class 'int'>"
     ]
   }
 }
