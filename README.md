@@ -90,7 +90,7 @@ from openpyxl.styles import PatternFill
 
 sheet_title = "validated"
 
-wb = openpyxl.load_workbook(file_name)
+wb = openpyxl.load_workbook('Turtle_Data.xlsx')
 
 if sheet_title in wb.sheetnames:
     ws = wb[sheet_title]
