@@ -15,11 +15,30 @@ pip install https://github.com/Wytamma/dfvalidate/archive/master.zip
 
 ### Basic:
 ```python
-df = pd.DataFrame({'foo':[1,2,3], 'bar':["one","two","three"]}
-checker = sheetcheck.SheetChecker()
-checker.add_column('foo', col_type=int, required=True)
-checker.add_column('bar', col_type=str)
-checked_df, errors = checker.check_sheet(df)
+import dfvalidate
+import pandas as pd
+import json
+
+df = pd.DataFrame({'foo':[1, 2, "three"], 'bar':["one", None, "three"]})
+validator = dfvalidate.Validator()
+validator.add_column('foo', col_type=int)
+validator.add_column('bar', col_type=str, required=True)
+validated_sheet, errors = validator.validate(df)
+
+print(json.dumps(errors['Col_errors'], indent=2))
+
+{
+  "foo": {
+    "2": [
+      "Value (three) not of type <class 'int'>"
+    ]
+  },
+  "bar": {
+    "1": [
+      "Value is required"
+    ]
+  }
+}
 ```
 
 ### Advanced:
@@ -36,5 +55,4 @@ validator.add_column('Date', required=True, date_format="%d/%m/%Y")
 validator.add_column('Latitude', regex="^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)$")
 validator.add_column('Longitude', regex="^[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$")
 validated_sheet, errors = validator.validate(df)
-checked_sheet, errors = checker.check_sheet(df)
 ```
