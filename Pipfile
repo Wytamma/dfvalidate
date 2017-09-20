@@ -4,6 +4,9 @@ verify_ssl = true
 
 [packages]
 nose = "*"
-Sphinx = "*"
+sphinx = "*"
 pandas = "*"
 numpy = "*"
+
+[dev-packages.dfvalidate]
+git = "https://github.com/wytamma/dfvalidate.git"
