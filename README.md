@@ -1,8 +1,19 @@
 # dfvalidate Module Repository
 
-## This module can be used to validate pandas data frames
+This module can be used to validate pandas data frames
 
-### Basic usage:
+## Installation
+
+#### From GitHub
+
+```sh
+pip install https://github.com/Wytamma/dfvalidate/archive/master.zip
+
+```
+
+## Usage
+
+### Basic:
 ```python
 df = pd.DataFrame({'foo':[1,2,3], 'bar':["one","two","three"]}
 checker = sheetcheck.SheetChecker()
@@ -10,7 +21,8 @@ checker.add_column('foo', col_type=int, required=True)
 checker.add_column('bar', col_type=str)
 checked_df, errors = checker.check_sheet(df)
 ```
-### Advanced usage:
+
+### Advanced:
 ```python
 df = pd.ExcelFile('Turtle_Data.xlsx').parse('Sheet1')
 validator = dfvalidate.Validator()
