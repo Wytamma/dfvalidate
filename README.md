@@ -7,7 +7,7 @@ This module can be used to validate pandas data frames
 #### From GitHub
 
 ```sh
-pip install https://github.com/Wytamma/dfvalidate/archive/master.zip
+pipenv install git+https://github.com/wytamma/dfvalidate.git#egg=dfvalidate
 
 ```
 
