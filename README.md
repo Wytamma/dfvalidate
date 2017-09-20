@@ -23,7 +23,7 @@ df = pd.DataFrame({'foo':[1, 2, "three"], 'bar':["one", None, "three"]})
 validator = dfvalidate.Validator()
 validator.add_column('foo', col_type=int)
 validator.add_column('bar', col_type=str, required=True)
-validated_sheet, errors = validator.validate(df)
+validated_df, errors = validator.validate(df)
 
 print(json.dumps(errors['Col_errors'], indent=2))
 
@@ -54,5 +54,5 @@ validator.add_column('Number of leeches', col_type=int, default=0)
 validator.add_column('Date', required=True, date_format="%d/%m/%Y")
 validator.add_column('Latitude', regex="^[-+]?([1-8]?\d(\.\d+)?|90(\.0+)?)$")
 validator.add_column('Longitude', regex="^[-+]?(180(\.0+)?|((1[0-7]\d)|([1-9]?\d))(\.\d+)?)$")
-validated_sheet, errors = validator.validate(df)
+validated_df, errors = validator.validate(df)
 ```
