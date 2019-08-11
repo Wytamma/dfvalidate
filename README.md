@@ -2,7 +2,7 @@
 
 This module can be used to validate pandas data frames. 
 
-This project is no longer maintianed. Check out the https://tmiguelt.github.io/PandasSchema/!
+This project is no longer maintianed. Check out https://tmiguelt.github.io/PandasSchema/!
 
 ## Installation
 
